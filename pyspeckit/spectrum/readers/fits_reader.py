@@ -29,12 +29,14 @@ def open_1d_fits(filename, hdu=0, **kwargs):
     # try to open as an HDU...
     if all((hasattr(filename,k) for k in ('data','header','_header'))):
         f = [filename]
-        print('yes')
+        print('case 1')
         hdu = 1
     elif isinstance(filename,pyfits.HDUList):
         f = filename
+        print('case 2')
     else:
         f = pyfits.open(filename, ignore_missing_end=True)
+        print('case 3')
 
     return open_1d_pyfits(f[hdu],**kwargs)
 
