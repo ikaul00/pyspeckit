@@ -39,6 +39,7 @@ def open_1d_fits(filename, hdu=0, **kwargs):
         print('case 3')
     print('hdu is')
     print(hdu)
+    hdu=1
     return open_1d_pyfits(f[hdu],**kwargs)
 
 
