@@ -29,6 +29,7 @@ def open_1d_fits(filename, hdu=0, **kwargs):
     # try to open as an HDU...
     if all((hasattr(filename,k) for k in ('data','header','_header'))):
         f = [filename]
+        print('yes')
         hdu = 1
     elif isinstance(filename,pyfits.HDUList):
         f = filename
@@ -53,6 +54,8 @@ def open_1d_pyfits(pyfits_hdu, specnum=0, wcstype='', specaxis="1",
     specaxis = str(specaxis)
 
     hdr = pyfits_hdu._header
+    print('header is: ')
+    print(hdr)                       
     if autofix:
         for card in hdr.cards:
             try:
@@ -64,6 +67,8 @@ def open_1d_pyfits(pyfits_hdu, specnum=0, wcstype='', specaxis="1",
                 del hdr[card.keyword]
 
     data = pyfits_hdu.data
+    print('data is:')
+    print(data)
 
     with np.errstate(invalid='ignore'):
         # silently turn signalling nans into quiet nans
