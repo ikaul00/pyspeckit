@@ -65,10 +65,12 @@ def open_1d_pyfits(pyfits_hdu, specnum=0, wcstype='', specaxis="1",
 
     data = pyfits_hdu.data
 
-    #with np.errstate(invalid='ignore'):
+    with np.errstate(invalid='ignore'):
         # silently turn signalling nans into quiet nans
         #data[np.isnan(data)] = np.nan
-    #    pd.isnull(data)
+        dataf = pd.Dataframe(data)
+        data = dataf.fillna(0) #pd.isnull(data)
+        data = np.array(data)
 
     # search for the correct axis (may be 1 or 3, unlikely to be 2 or others)
     # 1 = 1D spectrum
