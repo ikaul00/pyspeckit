@@ -68,7 +68,7 @@ def open_1d_pyfits(pyfits_hdu, specnum=0, wcstype='', specaxis="1",
     with np.errstate(invalid='ignore'):
         # silently turn signalling nans into quiet nans
         #data[np.isnan(data)] = np.nan
-        dataf = pd.Dataframe(data)
+        dataf = pd.DataFrame(data)
         data = dataf.fillna(0) #pd.isnull(data)
         data = np.array(data)
 
