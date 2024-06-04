@@ -4,6 +4,7 @@ try:
 except ImportError:
     import pyfits
 import numpy.ma as ma
+import pandas as pd
 import numpy as np
 from six import operator
 
@@ -64,9 +65,10 @@ def open_1d_pyfits(pyfits_hdu, specnum=0, wcstype='', specaxis="1",
 
     data = pyfits_hdu.data
 
-    with np.errstate(invalid='ignore'):
+    #with np.errstate(invalid='ignore'):
         # silently turn signalling nans into quiet nans
-        data[np.isnan(data)] = np.nan
+        #data[np.isnan(data)] = np.nan
+    #    pd.isnull(data)
 
     # search for the correct axis (may be 1 or 3, unlikely to be 2 or others)
     # 1 = 1D spectrum
