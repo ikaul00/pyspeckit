@@ -29,7 +29,7 @@ def open_1d_fits(filename, hdu=0, **kwargs):
     # try to open as an HDU...
     if all((hasattr(filename,k) for k in ('data','header','_header'))):
         f = [filename]
-        hdu = 0
+        hdu = 1
     elif isinstance(filename,pyfits.HDUList):
         f = filename
     else:
