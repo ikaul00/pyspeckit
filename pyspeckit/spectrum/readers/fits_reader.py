@@ -37,7 +37,8 @@ def open_1d_fits(filename, hdu=0, **kwargs):
     else:
         f = pyfits.open(filename, ignore_missing_end=True)
         print('case 3')
-
+    print('hdu is')
+    print(hdu)
     return open_1d_pyfits(f[hdu],**kwargs)
 
 
